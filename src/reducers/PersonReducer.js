@@ -1,18 +1,22 @@
 
 const daysInWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-function parsePersonData(personData){
+function parsePersonData(personData, year){
 
   let dayOfWeekPersonData = {};
   for(const index in personData){
       let person = personData[index];
       let date = new Date(person.birthday);
       let dayKey = daysInWeek[date.getDay()];
-      if(dayOfWeekPersonData.hasOwnProperty(dayKey)){
+      //filter data by selected year first
+      if(date.getFullYear() === parseInt(year)){
+
+        if(dayOfWeekPersonData.hasOwnProperty(dayKey)){
           var dayArray =dayOfWeekPersonData[dayKey]
           dayArray.push(person);
-      }else {
+        }else {
           dayOfWeekPersonData[dayKey] = [person];
+        }
       }
   }
   return dayOfWeekPersonData;
@@ -23,7 +27,7 @@ export default function (state = false, action) {
     switch (action.type) {
         case 'UPDATE_PERSON_DATA':
           console.log(action.payload);
-          return parsePersonData(action.payload.data);
+          return parsePersonData(action.payload.data, action.payload.year);
         default: 
         	return parsePersonData([
                 {
