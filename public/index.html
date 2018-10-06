@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/normalize.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/main.css">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Birthday Cal</title>
+    <style type="text/css">
+      .block-detail {
+        background: #eaf0f2;
+        padding: 15px;
+      }
+      .list-group-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: stretch;
+      }
+      .list-group-item > div {
+            width: 100%;
+            border-top: 1px solid #dadada;
+            border-right: 1px solid #dadada;
+            padding: 15px;
+      }
+      .b-left{
+            border-left: 1px solid #dadada;
+      }
+      .b-bottom {
+            border-bottom: 1px solid #dadada;
+    
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
+    <div class="app">
+
+      <h1 class="app__header">Birthday Cal</h1>
+  
+      <div class="app__content">
+  
+        <div class="intro ">
+          <div class="intro__task">
+            <p>
+              <strong>Birthday Cal</strong> is a week long calendar!
+            </p>
+            <p>
+              Render a card for each day of the week. For a given year, figure out whose birthday belongs to which card. Place people's
+              initials in the card according to these rules -
+            </p>
+            <p>
+              <ul>
+                <li>Each person must always be rendered as square</li>
+                <li>Use person's initials to label birthdays</li>
+                <li>Order people inside the card based on their age (youngest to oldest)</li>
+                <li>Each square in a card must be of equal size and should fill up as much space in the card as possible</li>
+                <li>Clicking on each initial's square should open a new page showing full name, name of born day and month, year, current age and  name of birth day in the current year.</li>
+              </ul>
+            </p>
+            <p>
+              <strong>Examples &dash;</strong>
+              <h4>Landing page</h4>
+              <img class="intro__example" src="%PUBLIC_URL%/images/display-rules.png" />
+              <h4>Second page<small>(routable)</small></h4>
+              <div>
+                <div class="block-detail">
+                  <div class="list-group-item list-group-item-action">
+                    <div class="b-left">Name </div><div> Rahul Malahotra</div>
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <div class="b-left">Born On  </div><div> 25 July 1990</div>
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <div class="b-left">Age  </div><div> 28</div>
+                    </div>
+                  <div class="list-group-item list-group-item-action">
+                    <div class="b-left b-bottom">Current birthday  </div><div class="b-bottom"> Monday</div>
+                   </div>
+  
+                </div>
+              </div>
+            </p>
+  
+          </div>
+          <div class="intro__helpers">
+            <p>
+              <strong>Submitting your work &dash;</strong>
+              <ul>
+                <li>
+                  Your submission should be functional within this page - see
+                  <a href="#work-area">work area</a>.
+                </li>
+                <li>
+                  Write your code using React js, redux and  react-router.
+                </li>
+                
+                <li>
+                  Submit back the completed task as a compressed zip of this git repo with your commits on top. Feel free to share over Dropbox
+                  / Email.
+                </li>
+              </ul>
+            </p>
+            <p>
+              <strong>Evaluation criteria &dash;</strong>
+              <ul>
+                <li>functionality coverage</li>
+                <li>readable and efficient code</li>
+                <li>should handle edge cases</li>
+                <li>maintainability</li>
+              </ul>
+            </p>
+  
+          </div>
+        </div>
+  
+        <hr class="border-line app__border" />
+  
+        <div id="root"></div>
+    
+        <hr class="border-line app__border" />
+  
+      </div>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    
+  </body>
+</html>
