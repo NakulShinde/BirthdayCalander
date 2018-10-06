@@ -1,6 +1,19 @@
 
 const daysInWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
+function reoderDataAccordingToBirthDay(dayWisePersonData){
+
+  for(const key in dayWisePersonData){
+    
+    dayWisePersonData[key].sort(function(firstPerson, secondPerson){
+      let fpDate = new Date(firstPerson.birthday);  
+      let spDate = new Date(secondPerson.birthday);  
+      return fpDate.getTime() - spDate.getTime();
+    });
+  }
+  return dayWisePersonData;
+}
+
 function parsePersonData(personData, year){
 
   let dayOfWeekPersonData = {};
@@ -19,7 +32,8 @@ function parsePersonData(personData, year){
         }
       }
   }
-  return dayOfWeekPersonData;
+
+  return reoderDataAccordingToBirthDay(dayOfWeekPersonData);
 };
 
 export default function (state = false, action) {
@@ -35,14 +49,14 @@ export default function (state = false, action) {
                   birthday: "12/02/1978"
                 }, {
                   name: "Cersei Lannister",
-                  birthday: "11/30/1975"
+                  birthday: "11/30/1978"
                 }, {
                   name: "Daenerys Targaryen",
-                  birthday: "11/24/1991"
+                  birthday: "11/24/1978"
                 }, {
                   name: "Arya Stark",
-                  birthday: "11/25/1996"
+                  birthday: "11/25/1978"
                 }
-            ]);
+            ], '1978');
     }
 }
