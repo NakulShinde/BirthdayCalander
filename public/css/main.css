@@ -216,6 +216,8 @@ body {
     border-radius: 3px;
 }
 
+
+
 .app__txt {
     -webkit-flex: 3;
     flex: 3;
@@ -259,6 +261,15 @@ body {
 .app__button:hover {
     color: rgba(255,255,255, 1.0);
     background: #0ea0f0;
+}
+
+.app__error_border {
+    border: 1px red solid;
+}
+.app__error {
+    color: red;
+    font-size: small;
+    padding-top: 10px;
 }
 
 
