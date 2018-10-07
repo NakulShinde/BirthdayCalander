@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import classNames from 'classnames/bind';
+
 import PersonInitials from "./PersonInitials"
 
 class CalenderDay extends Component {
@@ -14,7 +15,7 @@ class CalenderDay extends Component {
                 <div className="day__people">
                     {
                         dayOfWeekData.map(function(person, index){
-                            return  <PersonInitials key={index} person={person}></PersonInitials>
+                            return <PersonInitials key={index} person={person} personsCount={dayOfWeekData.length}></PersonInitials>       
                         })
                     }
                    

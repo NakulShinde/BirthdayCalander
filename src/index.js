@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import './index.css';
 import App from './App';
-// import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
+import PersonDetails from "./components/PersonDetails"
 
 import store from "./store/index"
 
 ReactDOM.render(
         <Provider store={store}>
-            <App />
+         <BrowserRouter>
+            <div>
+                <Route exact path="/" component={App} />
+                <Route path="/person/:dayOfWeek/:id" component={PersonDetails} />
+            </div>
+          </BrowserRouter>
         </Provider>, 
         document.getElementById('root'));
 

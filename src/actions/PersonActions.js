@@ -4,3 +4,10 @@ export const updatePersonData = (data, year) => {
         payload: {data: data, year: year}
     }
 };
+
+export const getPersonData = (personName, day) => {
+    return {
+        type: 'GET_PERSON_DATA',
+        payload: {name: personName, dayOfWeek: day}
+    }
+};
