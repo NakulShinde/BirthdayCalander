@@ -30,7 +30,7 @@ class PersonInitials extends Component {
                                          });
         return(
             <div className={customClass}>
-                <Link to={`/person/${person.dayOfWeek}/${person.name}`}>
+                <Link to={`/person/${person.id}`}>
                     {this.getPersonInitials(person)}
                 </Link>
             </div>

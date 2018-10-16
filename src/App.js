@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 
 import './App.css'
-import CalendarWeek from "./components/CalendarWeek"
-import PersonDataInput from "./components/PersonDataInput"
+import Home from "./components/Home"
 
 class App extends Component {
   render() {
     return (
-     
-        <div id="work-area">
-          <CalendarWeek />
-  
-          <PersonDataInput></PersonDataInput>
-  
-        </div>
+      <Home />
     );
   }
 }

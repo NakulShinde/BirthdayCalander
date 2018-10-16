@@ -14,7 +14,7 @@ ReactDOM.render(
          <BrowserRouter>
             <div>
                 <Route exact path="/" component={App} />
-                <Route path="/person/:dayOfWeek/:id" component={PersonDetails} />
+                <Route path="/person/:id" component={PersonDetails} />
             </div>
           </BrowserRouter>
         </Provider>, 
