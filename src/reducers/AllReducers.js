@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
-import PersonReducer from './PersonReducer';
+import PersonsListReducer from './PersonsListReducer';
+import PersonDetailsReducer from './PersonDetailsReducer'
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -7,7 +8,8 @@ import PersonReducer from './PersonReducer';
  * */
 
 const AllReducers = combineReducers({
-    personData: PersonReducer
+    personData: PersonsListReducer,
+    personDetails: PersonDetailsReducer
 });
 
 export default AllReducers;

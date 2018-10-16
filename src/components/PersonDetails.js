@@ -1,30 +1,34 @@
-import React, { Component} from "react";
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import React, { Component} from "react"
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
-import {getPersonData} from './../actions/PersonActions'
+import {fetchPersonData, setPersonData} from './../actions/PersonDetailsActions'
+import {getPersonListData} from './../services/APIService'
 
 class PersonDetails extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            personId : null,
-            dayOfWeek : null
-        }
-    }
-
     componentDidMount() {
-        this.props.getPersonData(
-            this.props.match.params['id'],
-            this.props.match.params['dayOfWeek']
-        );
+        let personId = parseInt(this.props.match.params['id'])
+        
+        this.props.fetchPersonData()
+        getPersonListData().then(data => {
+            this.props.setPersonData(data.data[personId])
+        }).catch(e =>{
+            console.log("getPersonListData Error", e)
+            this.props.setPersonData([])
+        });
+
     }
 
     render(){
-        const person = this.props.personData.slectedPerson || {};
-        console.log(person);
-        // const bornOn = 
+        if(!this.props.personData || this.props.personData.isLoading){
+            return <div><h1 className="cal__title">Loading...</h1></div>
+        }
+        const person = this.props.personData.selectedPerson || {};
+        if(!this.props.personData.isLoading && Object.keys(person).length === 0){
+            return <div><h1 className="cal__title">No Data Found</h1></div>
+        }
+        
         return(
             <div className="intro__task">
                 <div className="block-detail">
@@ -49,13 +53,14 @@ class PersonDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        personData: state.personData
+        personData: state.personDetails
     }
 }
 
 function matchDispatchToProps(dispatch){
     return bindActionCreators({
-            getPersonData: getPersonData
+            setPersonData: setPersonData,
+            fetchPersonData: fetchPersonData
     	}, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(PersonDetails);
