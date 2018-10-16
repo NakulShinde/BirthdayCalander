@@ -1,4 +1,4 @@
-# BirthdayCalander
+# BirthdayCalender
 
 Fornt End stack Used:
 - React
