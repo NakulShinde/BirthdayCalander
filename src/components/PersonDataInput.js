@@ -30,37 +30,65 @@ class PersonDataInput extends Component {
     }
     
     handleUpdate(){
+        let friendsData = this.state.personData;
+        let year = this.state.yearData;
+        
         try{
-            let data = JSON.parse(this.state.personData);
-            let year = this.state.yearData;
+            
             var numbers = /^[0-9]+$/;
-            if(year.match(numbers)){
-                this.props.updatePersonData(data, this.state.yearData);
-                this.setState({invalidData: ''});
-            }else{
-                this.setState({invalidData: "Invalid year."});
+            if(friendsData === "" && year === "" ){
+                this.setState({invalidData: "Please enter friends data or year."});
+                return;
             }
+            
+            if(year !== "" && !year.match(numbers)){
+                this.setState({invalidData: "Invalid year."});
+                return;
+            }else if(year === ""){
+                year = null;
+            }
+
+            if(friendsData !== ""){
+                friendsData = JSON.parse(this.state.personData);
+            }else{
+                friendsData = null;
+            }
+
+            this.props.updatePersonData(friendsData, year);
+            this.setState({invalidData: ''});
+            
         }catch(e){
-            this.setState({invalidData: "Invalid JSON input data."});
+            this.setState({invalidData: "Invalid friends data."});
         }
     }
 
     render(){
-        let customTextareaClass = classNames({ 'app__txt js-json': true, 'app__error_border': this.state.invalidData === "Invalid JSON input data." });
-        let customTextInputClass = classNames({ 'app__input js-year': true, 'app__error_border': this.state.invalidData === "Invalid year." });
+        let customTextareaClass = classNames({ 
+            'app__txt js-json': true, 
+            'app__error_border': (
+                this.state.invalidData === "Invalid friends data." ||
+                this.state.invalidData === "Please enter friends data or year." )
+             });
+        let customTextInputClass = classNames({ 
+            'app__input js-year': true, 
+            'app__error_border': (
+                this.state.invalidData === "Invalid year." ||
+                this.state.invalidData === "Please enter friends data or year." )
+            });
         return(
             <div className="app__inputs">
-  
-                <textarea className={customTextareaClass} 
-                    id="json-input" 
-                    placeholder="Paste your friends list json here."
-                    name="personData"
-                    value={this.state.personData}
-                    onChange={this.handleChange}>
-                
-                </textarea>
-    
-                <div className="app__actions">
+                <div className="app__actions_left ">
+                    <label>Friends Data</label>
+                    <textarea className={customTextareaClass} 
+                        id="json-input" 
+                        placeholder="Paste your friends list json here."
+                        name="personData"
+                        value={this.state.personData}
+                        onChange={this.handleChange}>
+                    
+                    </textarea>
+                </div>
+                <div className="app__actions_right">
                     <label>Year</label>
                     
                     <input className={customTextInputClass} type="text"
@@ -77,7 +105,6 @@ class PersonDataInput extends Component {
     }
 }
 
-// export default PersonDataInput;
 const mapStateToProps = (state) => {
     return {
         personData: state.personData

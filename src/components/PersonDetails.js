@@ -13,7 +13,10 @@ class PersonDetails extends Component {
         
         this.props.fetchPersonData()
         getPersonListData().then(data => {
-            this.props.setPersonData(data.data[personId])
+            //delay
+            setTimeout(() => {
+                this.props.setPersonData(data.data[personId])
+            }, 500);
         }).catch(e =>{
             console.log("getPersonListData Error", e)
             this.props.setPersonData([])

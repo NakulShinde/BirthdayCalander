@@ -15,8 +15,11 @@ class Home extends Component {
     componentDidMount() {
         this.props.fetchPersonsList();
         getPersonListData().then(data => {
-            
-            this.props.setPersonsList(data)
+            //delay
+            setTimeout(() => {
+                this.props.setPersonsList(data)
+            }, 500);
+
         }).catch(e =>{
             console.log("getPersonListData Error", e);
             this.props.setPersonsList([])
