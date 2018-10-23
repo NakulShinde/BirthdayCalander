@@ -1,6 +1,7 @@
 import React, { Component} from "react"
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
 
 import {fetchPersonData, setPersonData} from './../actions/PersonDetailsActions'
 import {getPersonListData} from './../services/APIService'
@@ -31,6 +32,9 @@ class PersonDetails extends Component {
         
         return(
             <div className="intro__task">
+                <Link to={`/`}>
+                    <button className="app__button">Back</button>
+                </Link>
                 <div className="block-detail">
                   <div className="list-group-item list-group-item-action">
                     <div className="b-left">Name </div><div> {person.name}</div>
