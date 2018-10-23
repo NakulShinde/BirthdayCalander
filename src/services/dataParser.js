@@ -32,7 +32,7 @@ export const convertPersonDataWithDay = (personData, year) => {
         let person = personData[index];
         person.id = parseInt(index);
         
-        let userBirDateInYear = getCurrentDayOfUserBirthday(person);
+        let userBirDateInYear = getCurrentDayOfUserBirthday(person, year);
         if(isNaN(userBirDateInYear.getMonth())){
             continue;
         }
@@ -47,29 +47,6 @@ export const convertPersonDataWithDay = (personData, year) => {
     }
     return reoderDataAccordingToBirthDay(personDataWithBirthdayDay);
 }
-
-export const  parsePersonData = (personData, year) => {
-
-    let dayOfWeekPersonData = {};
-    for (const index in personData) {
-        let person = personData[index];
-        let date = new Date(person.birthday);
-        let dayKey = daysInWeek[date.getDay()];
-        //filter data by selected year first
-        if (date.getFullYear() === parseInt(year)) {
-
-            person['dayOfWeek'] = dayKey;
-            if (dayOfWeekPersonData.hasOwnProperty(dayKey)) {
-                var dayArray = dayOfWeekPersonData[dayKey]
-                dayArray.push(person);
-            } else {
-                dayOfWeekPersonData[dayKey] = [person];
-            }
-        }
-    }
-
-    return reoderDataAccordingToBirthDay(dayOfWeekPersonData);
-};
 
 
 export const preparePersonToDisply = (person) => {

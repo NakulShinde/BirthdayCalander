@@ -12,7 +12,7 @@ class CalendarWeek extends Component {
         if(!personData || personData.isLoading){
             return <div><h1 className="cal__title">Loading...</h1></div>
         }
-        const modifiedPersondata = convertPersonDataWithDay(personData.data);
+        const modifiedPersondata = convertPersonDataWithDay(personData.data, personData.year);
         return(
             <div>
                 <h1 className="cal__title">Work Area</h1>

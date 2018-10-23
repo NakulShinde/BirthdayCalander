@@ -1,5 +1,4 @@
 
-import {parsePersonData} from "../services/dataParser";
 
 let initailState = [
   {
@@ -37,8 +36,14 @@ export default function (state = null, action) {
         }
       
       case 'UPDATE_PERSON_DATA':
-
-          return parsePersonData(action.payload.data, action.payload.year);
+          let data = (action.payload.data)? action.payload.data : state.data;
+          let year = (action.payload.year)? action.payload.year : null;
+          
+          return {
+            isLoading: false,
+            data : [...data],
+            year: year
+          };
         
       default:
         	return {
